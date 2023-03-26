@@ -1,14 +1,15 @@
-from abc import ABC
+# Importing the Engine class.
+from engine.engine import Engine
 
-from car import Car
+# Defining a new class called "SternmanEngine" that inherits from the "Engine" class.
+class SternmanEngine(Engine):
 
-
-class SternmanEngine(Car, ABC):
-    def __init__(self, last_service_date, warning_light_is_on):
-        super().__init__(last_service_date)
+    # Initializes the "warning_light_is_on" attribute of the object.
+    def __init__(self, warning_light_is_on):
         self.warning_light_is_on = warning_light_is_on
 
-    def engine_should_be_serviced(self):
+    # If the warning light is on, the engine needs to be serviced.
+    def needs_service(self):
         if self.warning_light_is_on:
             return True
         else:

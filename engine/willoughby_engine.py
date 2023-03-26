@@ -1,13 +1,14 @@
-from abc import ABC
+# Importing the Engine class.
+from engine.engine import Engine
 
-from car import Car
-
-
-class WilloughbyEngine(Car, ABC):
-    def __init__(self, last_service_date, current_mileage, last_service_mileage):
-        super().__init__(last_service_date)
+# Defining a new class called "WilloughbyEngine" that inherits from the "Engine" class.
+class WilloughbyEngine(Engine):
+    
+    # Initializes the "current_mileage" and "last_service_mileage" attributes of the object.
+    def __init__(self, current_mileage, last_service_mileage):
         self.current_mileage = current_mileage
         self.last_service_mileage = last_service_mileage
 
-    def engine_should_be_serviced(self):
+    # If the current mileage minus the last service mileage is greater than 60,000 miles, the engine needs to be serviced.
+    def needs_service(self):
         return self.current_mileage - self.last_service_mileage > 60000
